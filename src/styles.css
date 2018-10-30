@@ -1,0 +1,152 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body { margin: 0; }
+
+.main-card {
+  margin:10px;
+}
+.main-card-content {
+  padding:20px;
+}
+.main-card-header{
+    border-bottom: 1px solid grey;
+box-shadow: 0 5px 5px -5px grey;
+}
+div.container{
+    margin: 0px 40px;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  form.normal-form{
+    margin: 10px;
+}
+.mat-tab-label-active{
+    background: #3f51b5;
+    color: white;
+}
+.ListBackground{
+     background: lightgray;
+    font-size: 18px !important;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mat-icon {
+    font-size: 24 !important;
+  }
+  .mat-list-item{
+      padding: 20px;
+  }
+  .fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+ 
+/* notification */
+snack-bar-container.success {
+    background-color: #5cb85c;
+    color : #fff;
+  }
+  snack-bar-container.warn {
+    background-color: #f99157;
+    color : #fff;
+  }
+  snack-bar-container.notification simple-snack-bar{
+    font-size: 18px !important;
+    font-weight: bold;
+  }
+  .hide{
+    display: none;
+}
+
+/*--User Data Styles--*/
+.ListContent{
+  /*max-width: 70% !important;*/
+    min-width: 70% !important;
+}
+.ListButton{
+    max-width: 25% !important;
+    width: 25% !important;
+}
+/*.MainListContent{
+    max-width: 700px !important;
+}*/
+.listWidth500{
+    max-width: 100%;
+}
+ .ListProperties {
+      max-height:300px;
+      overflow: auto;
+  }
+  .controles-container{
+    width: 100%;
+    padding: 5px;  
+     display: flex;
+  flex-direction: column; 
+  margin-top: 10px; 
+}
+.controles-container > * {
+  width: 100%;
+}
+.listDiv{
+    max-height: 300px;
+    overflow: auto;
+}
+.listStyle{
+    max-height: 100px; 
+    max-width: 100%;
+    background-color: lightgray; 
+    margin-top: 10px;
+    font-size: 14px; 
+    font-weight: bold;
+}
+.cursorPointer{
+    cursor: pointer;
+}
+@media only screen and (min-width: 1200px) {
+.listWidth500{
+    max-width: 50%;
+}
+.controles-container{
+    width: 50%;
+}
+.listStyle{
+      max-width: 50%;
+      font-size: 18px; 
+}
+
+
+.sort-icon-spacer {
+  flex: 1 1 auto;
+}
+}
+@media screen and (max-width: 600px) {
+  
+}
+.sort-icon {
+  padding: 0 14px;
+}
+@media only screen and (min-width: 768px) {
+.mobileButton{
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+.desktopButton{
+    display: none;
+  }
+  .sort-icon {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    display: none;
+  }
+}
+/*--End of User Data Styles--*/

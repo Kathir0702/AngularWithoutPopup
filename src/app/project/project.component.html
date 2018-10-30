@@ -1,0 +1,71 @@
+<form [formGroup]="projectService.form" (submit)="onSubmit()">
+  <div class="controles-container">
+    <mat-form-field>
+      <input type="hidden" formControlName="ProjectId">
+      <input formControlName="ProjectName" autocomplete="off" matInput placeholder="Project Name*">
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <div>
+      <mat-checkbox formControlName="DateReqd">set Start Date and End Date</mat-checkbox>
+    </div>
+    <mat-form-field>
+      <input matInput autocomplete="off" formControlName="StartDate" [matDatepicker]="picker" placeholder="Start Date" [disabled]="!projectService.form.value.DateReqd">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput autocomplete="off" formControlName="EndDate" [matDatepicker]="picker1" placeholder="End Date" [disabled]="!projectService.form.value.DateReqd">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <div style="width: 100%;">
+      <div style="width:30%;">
+        <mat-form-field>
+          <input type="number" formControlName="ProjectPriority" autocomplete="off" matInput placeholder="Project Priority*">
+        </mat-form-field>
+      </div>
+      <div style="width:30%;">
+        <mat-slider max="100" min="1" thumbLabel="true">
+        </mat-slider>
+      </div>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button type="submit" style="margin-right:10px;" color="primary" [disabled]="projectService.form.invalid">{{addButtonName}}</button>
+      <button mat-raised-button style="margin-right:10px;" color="warn" (click)="clearData()">Reset</button>
+    </div>
+  </div>
+</form>
+<br />
+<div class="search-div">
+  <mat-toolbar style="background: white;">
+    <mat-toolbar-row>
+      <mat-form-field>
+        <input matInput [(ngModel)]="searchText" placeholder="Search Projects">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;<span class="sort-icon">Sort: </span>&nbsp;
+      <button mat-raised-button class="sort-icon" (click)="setOrder('ProjectName')">First Name
+       <mat-icon *ngIf="order=='ProjectName'">{{reverse ? 'arrow_drop_down' : 'arrow_drop_up'}}</mat-icon>
+    </button> &nbsp;
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div class="listDiv">
+  <mat-grid-list cols="5" rowHeight="100px" class="listStyle" *ngFor="let projectDetail of sortedCollection | filter:{ FirstName: searchText } : false | orderBy: order:reverse:'case-insensitive'">
+    <mat-grid-tile colspan="3" rowspan="1">
+      <div style="text-align: left;display: flex; min-width: 60%;">
+        <p> Project Name : {{projectDetail.ProjectName}} <br />
+        </p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="1" style="min-width: 20%;">
+      <div class="desktopButton">
+        <a mat-raised-button title="Edit User" style="display: block !important; margin: 0 auto;" (click)="onEdit(projectDetail)">Edit</a>        <br />
+        <a mat-raised-button title="Delete User" style="display: block !important; margin: 0 auto;" (click)="onDelete(projectDetail)">Delete</a>
+      </div>
+      <div class="mobileButton">
+        <mat-icon class="cursorPointer" title="Edit User" (click)="onEdit(projectDetail)">edit</mat-icon>
+        <mat-icon class="cursorPointer" title="Delete User" (click)="onDelete(projectDetail)">delete</mat-icon>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
